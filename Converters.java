@@ -1,7 +1,6 @@
 import java.util.*;
 
-public class Converters
-{
+public class Converters {
 
     public static void main(String[] args) {
 
@@ -15,41 +14,40 @@ public class Converters
 
         choice = sc.nextInt();
 
-        if (choice == 1)
-        {
+        if (choice == 1) {
             System.out.println("Please choose to convert to upper or lower case: ");
             System.out.println("1. Lower case to upper case.");
             System.out.println("2. Upper case to lower case.");
             int select;
             select = sc.nextInt();
 
-            if (select == 1)
-            {
+            if (select == 1) {
                 String txt;
                 txt = lowerCase();
 
                 System.out.println(txt.toUpperCase());
             }
 
-            if(select == 2)
-            {
+            if (select == 2) {
                 String txt2;
                 txt2 = upperCase();
 
                 System.out.println(txt2.toLowerCase());
             }
         }
-        if (choice == 2)
-        {
+        if (choice == 2) {
+            String string = "10";
 
-            String line;
-          line = sc.nextLine();
-           isNumeric(line);
+            if(isNumeric(string)) {
+                System.out.println("String is numeric!");
+
+            } else {
+                System.out.println("String is not numeric.");
+            }
         }
     }
 
-    public static String lowerCase()
-    {
+    public static String lowerCase() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Please enter a text that you wish to be converted to upper case.");
@@ -60,8 +58,7 @@ public class Converters
 
     }
 
-    public static String upperCase()
-    {
+    public static String upperCase() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Please enter a text that you wish to be converted to lower case: ");
@@ -73,12 +70,18 @@ public class Converters
 
     }
 
-    public static boolean isNumeric(String line)
-    {
-
+    public static boolean isNumeric(String string) {
         int intValue;
+
+        System.out.println(String.format("Parsing string: \"%s\"", string));
+
+        if (string == null || string.equals("")) {
+            System.out.println("String cannot be parsed, it is null or empty.");
+            return false;
+        }
+
         try {
-            intValue = Integer.parseInt(line);
+            intValue = Integer.parseInt(string);
             return true;
         } catch (NumberFormatException e) {
             System.out.println("Input String cannot be parsed to Integer.");
