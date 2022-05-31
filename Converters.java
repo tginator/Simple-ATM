@@ -37,12 +37,8 @@ public class Converters {
         }
         if (choice == 2) {
 
-            if(isNumeric()) {
-                System.out.println("String is numeric!");
+            isNumeric();
 
-            } else {
-                System.out.println("String is not numeric.");
-            }
         }
     }
 
@@ -69,28 +65,23 @@ public class Converters {
 
     }
 
-    public static boolean isNumeric() {
-        int intValue;
-        Scanner sc = new Scanner(System.in);
+        public static void isNumeric()
+        {
+            Scanner sc = new Scanner(System.in);
 
-        String string;
-        string = sc.nextLine();
+            String input;
+            input = "omg10";
 
-        System.out.println(String.format("Parsing string: \"%s\"", string));
-
-        if (string == null || string.equals("")) {
-            System.out.println("String cannot be parsed, it is null or empty.");
-            return false;
+            char[] chars = input.toCharArray();
+            for(char c : chars){
+                if(Character.isDigit(c)){
+                    System.out.println("String contains numeric value.");
+                }
+                else {
+                    System.out.println("String doesn't contain numeric value.");
+                }
+            }
         }
-
-        try {
-            intValue = Integer.parseInt(string);
-            return true;
-        } catch (NumberFormatException e) {
-            System.out.println("Input String cannot be parsed to Integer.");
-        }
-        return false;
     }
-}
 
 
