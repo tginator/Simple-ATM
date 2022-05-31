@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Scanner;
 
 public class Converters {
 
@@ -65,23 +66,30 @@ public class Converters {
 
     }
 
-        public static void isNumeric()
-        {
-            Scanner sc = new Scanner(System.in);
+    public static void isNumeric() {
+        Scanner sc = new Scanner(System.in);
 
-            String input;
-            input = "omg10";
+        String input;
+        input = sc.next();
 
-            char[] chars = input.toCharArray();
-            for(char c : chars){
-                if(Character.isDigit(c)){
-                    System.out.println("String contains numeric value.");
-                }
-                else {
-                    System.out.println("String doesn't contain numeric value.");
-                }
+        char[] chars = input.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (char c : chars) {
+            if (Character.isDigit(c)) {
+                sb.append(c);
             }
         }
+        boolean numeric = true;
+        try {
+            Double num = Double.parseDouble(String.valueOf(sb));
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
+        if (numeric)
+            System.out.println(input + " contains a number");
+        else
+            System.out.println(input + " doesn't contain a number");
     }
+}
 
 
