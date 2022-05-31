@@ -36,9 +36,8 @@ public class Converters {
             }
         }
         if (choice == 2) {
-            String string = "10";
 
-            if(isNumeric(string)) {
+            if(isNumeric()) {
                 System.out.println("String is numeric!");
 
             } else {
@@ -70,8 +69,12 @@ public class Converters {
 
     }
 
-    public static boolean isNumeric(String string) {
+    public static boolean isNumeric() {
         int intValue;
+        Scanner sc = new Scanner(System.in);
+
+        String string;
+        string = sc.nextLine();
 
         System.out.println(String.format("Parsing string: \"%s\"", string));
 
