@@ -130,7 +130,7 @@ public class Converters {
     public static void removeNum(){
 
         Scanner sc = new Scanner(System.in);
-
+        System.out.println("Please enter a string: ");
 
         String string = sc.next();
         char[] chars = string.toCharArray();
@@ -141,6 +141,23 @@ public class Converters {
             }
         }
         System.out.println(sb);
+        String txt = sb.toString();
+        
+        System.out.println("Convert to: ");
+        System.out.println("1. Upper case.");
+        System.out.println("2. Lower case.");
+
+        int select;
+        select = sc.nextInt();
+
+        if (select == 1)
+        {
+            System.out.println(txt.toUpperCase());
+        }
+        if (select == 2)
+        {
+            System.out.println(txt.toLowerCase());
+        }
 
     }
 }
