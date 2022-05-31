@@ -13,6 +13,7 @@ public class Converters {
         System.out.println("1. Convert text to upper case or lower case");
         System.out.println("2. Identify whether numeric values are in a given string.");
         System.out.println("3. Identify whether a given string is a valid number or not.");
+        System.out.println("4. Remove any numeric values in a given string and then convert the string to upper case or lower Case.");
 
 
         choice = sc.nextInt();
@@ -48,6 +49,10 @@ public class Converters {
         if (choice == 3) {
 
             isNumeric();
+        }
+
+        if (choice == 4) {
+            removeNum();
         }
     }
 
@@ -104,6 +109,8 @@ public class Converters {
     {
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("Please enter string: ");
+
 
         String input = sc.next();
         boolean numeric = true;
@@ -118,6 +125,23 @@ public class Converters {
             System.out.println(input + " is a valid number");
         else
             System.out.println(input + " is not a valid number");
+    }
+
+    public static void removeNum(){
+
+        Scanner sc = new Scanner(System.in);
+
+
+        String string = sc.next();
+        char[] chars = string.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(char c : chars){
+            if(Character.isLetter(c)){
+                sb.append(c);
+            }
+        }
+        System.out.println(sb);
+
     }
 }
 
