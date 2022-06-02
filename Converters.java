@@ -1,9 +1,11 @@
+import java.io.*;
+import java.sql.Array;
 import java.util.*;
 import java.util.Scanner;
 
 public class Converters {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         Scanner sc = new Scanner(System.in);
 
@@ -14,6 +16,7 @@ public class Converters {
         System.out.println("2. Identify whether numeric values are in a given string.");
         System.out.println("3. Identify whether a given string is a valid number or not.");
         System.out.println("4. Remove any numeric values in a given string and then convert the string to upper case or lower Case.");
+        System.out.println("5. Convert time.");
 
 
         choice = sc.nextInt();
@@ -54,7 +57,14 @@ public class Converters {
         if (choice == 4) {
             removeNum();
         }
-    }
+
+        if (choice == 5) {
+
+            int[] data = readArray("/Users/tg/Desktop/FinalSE/times.txt");
+            System.out.println(Arrays.toString(data));
+
+            }
+        }
 
     public static String lowerCase() {
         Scanner sc = new Scanner(System.in);
@@ -160,6 +170,42 @@ public class Converters {
         }
 
     }
+
+    public static int[] readArray(String file){
+
+        try {
+           File f = new File(file);
+           Scanner s = new Scanner(f);
+           int ctr = 0;
+           while (s.hasNextInt()) {
+               ctr = ctr + 1;
+               s.nextInt();
+
+           }
+            int[] times = new int[ctr];
+
+           Scanner s1 = new Scanner(f);
+
+           for(int i = 0; i < times.length; i++) {
+               times[i] = s1.nextInt();
+           }
+           return times;
+
+
+            } catch (FileNotFoundException e) {
+        }
+        return null;
+    }
+    public static void writeFile() throws FileNotFoundException {
+
+        FileOutputStream fos = new FileOutputStream("converttime.txt");
+        PrintWriter pw = new PrintWriter(fos);
+
+        pw.println("hello you");
+        pw.close();
+
+    }
+
 }
 
 
