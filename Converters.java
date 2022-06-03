@@ -1,6 +1,4 @@
 import java.io.*;
-import java.sql.Array;
-import java.util.*;
 import java.util.Scanner;
 
 public class Converters {
@@ -60,8 +58,15 @@ public class Converters {
 
         if (choice == 5) {
 
-            int[] data = readArray("/Users/tg/Desktop/FinalSE/times.txt");
-            System.out.println(Arrays.toString(data));
+            System.out.println("Please select a time conversion: ");
+            System.out.println("1. Hours to minutes conversion.");
+            int select;
+            select = sc.nextInt();
+
+            if (select == 1) {
+                HoursToMinutes();
+
+            }
 
             }
         }
@@ -182,7 +187,7 @@ public class Converters {
                s.nextInt();
 
            }
-            int[] times = new int[ctr];
+           int[] times = new int[ctr];
 
            Scanner s1 = new Scanner(f);
 
@@ -190,7 +195,6 @@ public class Converters {
                times[i] = s1.nextInt();
            }
            return times;
-
 
             } catch (FileNotFoundException e) {
         }
@@ -204,6 +208,19 @@ public class Converters {
         pw.println("hello you");
         pw.close();
 
+    }
+
+    public static int HoursToMinutes() {
+        int[] times = readArray("times.txt");
+
+        int convert = 0;
+
+        for (int i = 0; i < times.length; i++) {
+            convert = times[i]*60;
+            System.out.println(times[i] + " hours " + " = " + convert + "minutes");
+
+        }
+    return convert;
     }
 
 }
