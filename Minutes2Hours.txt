@@ -1,0 +1,5 @@
+5.0 minutes  = 0.08333333333333333hours
+6.0 minutes  = 0.1hours
+7.0 minutes  = 0.11666666666666667hours
+8.0 minutes  = 0.13333333333333333hours
+9.0 minutes  = 0.15hours

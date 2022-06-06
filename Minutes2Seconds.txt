@@ -1,0 +1,5 @@
+5 minutes  = 300 seconds
+6 minutes  = 360 seconds
+7 minutes  = 420 seconds
+8 minutes  = 480 seconds
+9 minutes  = 540 seconds

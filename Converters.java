@@ -1,4 +1,5 @@
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Converters {
@@ -16,7 +17,6 @@ public class Converters {
         System.out.println("4. Remove any numeric values in a given string and then convert the string to upper case or lower Case.");
         System.out.println("5. Convert time.");
 
-
         choice = sc.nextInt();
 
         if (choice == 1) {
@@ -28,17 +28,13 @@ public class Converters {
             select = sc.nextInt();
 
             if (select == 1) {
-                String txt;
-                txt = lowerCase();
-
-                System.out.println(txt.toUpperCase());
+                lowerCase("INPUT", "input");
             }
 
             if (select == 2) {
-                String txt2;
-                txt2 = upperCase();
 
-                System.out.println(txt2.toLowerCase());
+                upperCase("input", "INPUT");
+
             }
         }
         if (choice == 2) {
@@ -60,29 +56,41 @@ public class Converters {
 
             System.out.println("Please select a time conversion: ");
             System.out.println("1. Hours to minutes conversion.");
+            System.out.println("2. Minutes to hours conversion.");
+            System.out.println("3. Minutes to seconds conversion.");
+            System.out.println("4. Seconds to minutes conversion.");
+
             int select;
             select = sc.nextInt();
 
             if (select == 1) {
                 HoursToMinutes();
-
             }
-
+            if (select == 2) {
+                MinutesToHours();
+            }
+            if (select == 3) {
+                MinutesToSeconds();
+            }
+            if (select == 4) {
+                SecondsToMinutes();
             }
         }
+        }
 
-    public static String lowerCase() {
+    public static String lowerCase(String input, String s) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Please enter a text that you wish to be converted to upper case.");
 
         String txt;
         txt = sc.nextLine();
-        return txt;
+        System.out.println(txt.toUpperCase());
 
+        return txt;
     }
 
-    public static String upperCase() {
+    public static String upperCase(String input, String s) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Please enter a text that you wish to be converted to lower case: ");
@@ -90,6 +98,8 @@ public class Converters {
 
         String txt2;
         txt2 = sc.nextLine();
+        System.out.println(txt2.toLowerCase());
+
         return txt2;
 
     }
@@ -176,7 +186,7 @@ public class Converters {
 
     }
 
-    public static int[] readArray(String file){
+    public static double[] readArray(String file){
 
         try {
            File f = new File(file);
@@ -187,7 +197,7 @@ public class Converters {
                s.nextInt();
 
            }
-           int[] times = new int[ctr];
+           double[] times = new double[ctr];
 
            Scanner s1 = new Scanner(f);
 
@@ -200,27 +210,92 @@ public class Converters {
         }
         return null;
     }
-    public static void writeFile() throws FileNotFoundException {
 
-        FileOutputStream fos = new FileOutputStream("converttime.txt");
+    public static double HoursToMinutes() throws FileNotFoundException {
+        double[] times = readArray("times.txt");
+
+        FileOutputStream fos = new FileOutputStream("Hours2Minutes.txt");
         PrintWriter pw = new PrintWriter(fos);
 
-        pw.println("hello you");
-        pw.close();
-
-    }
-
-    public static int HoursToMinutes() {
-        int[] times = readArray("times.txt");
-
-        int convert = 0;
+        double convert = 0;
 
         for (int i = 0; i < times.length; i++) {
             convert = times[i]*60;
             System.out.println(times[i] + " hours " + " = " + convert + "minutes");
+            pw.println(times[i] + " hours " + " = " + convert + "minutes");
 
         }
-    return convert;
+        pw.close();
+        System.out.println("Conversion has been printed to Hours2Minutes.txt");
+
+        return convert;
+    }
+
+    public static double MinutesToHours() throws FileNotFoundException {
+
+        double[] times = readArray("times.txt");
+
+        FileOutputStream fos = new FileOutputStream("Minutes2Hours.txt");
+        PrintWriter pw = new PrintWriter(fos);
+
+        double convert = 0;
+
+        for (int i = 0; i < times.length; i++) {
+
+            convert = times[i]/60;
+            System.out.println(times[i] + " minutes " + " = " + convert + "hours");
+            pw.println(times[i] + " minutes " + " = " + convert + "hours");
+
+
+        }
+        pw.close();
+        System.out.println("Conversion has been printed to Minutes2Hours.txt");
+
+        return convert;
+    }
+
+    public static double MinutesToSeconds() throws FileNotFoundException {
+        double[] times = readArray("times.txt");
+
+        FileOutputStream fos = new FileOutputStream("Minutes2Seconds.txt");
+        PrintWriter pw = new PrintWriter(fos);
+
+        double convert = 0;
+
+        for (int i = 0; i < times.length; i++) {
+            convert = times[i]*60;
+            System.out.println(times[i] + " minutes " + " = " + convert + " seconds");
+            pw.println(times[i] + " minutes " + " = " + convert + " seconds");
+
+        }
+        pw.close();
+        System.out.println("Conversion has been printed to Minutes2Seconds.txt");
+
+        return convert;
+    }
+    public static double SecondsToMinutes() throws FileNotFoundException {
+
+        double[] times = readArray("times.txt");
+
+        FileOutputStream fos = new FileOutputStream("Seconds2Minutes.txt");
+        PrintWriter pw = new PrintWriter(fos);
+
+        DecimalFormat df = new DecimalFormat(".00");
+
+        double convert = 0;
+
+        for (int i = 0; i < times.length; i++) {
+
+            convert = times[i]/60;
+            System.out.println(times[i] + " seconds " + " = " + df.format(convert) + " minutes");
+            pw.println(times[i] + " seconds " + " = " + df.format(convert) + " minutes");
+
+        }
+
+        pw.close();
+        System.out.println("Conversion has been printed to Seconds2Minutes.txt");
+
+        return convert;
     }
 
 }
