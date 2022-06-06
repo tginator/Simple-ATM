@@ -1,0 +1,5 @@
+5 hours  = 300minutes
+6 hours  = 360minutes
+7 hours  = 420minutes
+8 hours  = 480minutes
+9 hours  = 540minutes

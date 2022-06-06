@@ -1,0 +1,5 @@
+5 seconds  = .00 minutes
+6 seconds  = .00 minutes
+7 seconds  = .00 minutes
+8 seconds  = .00 minutes
+9 seconds  = .00 minutes
